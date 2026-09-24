@@ -1,0 +1,91 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Afterhours 001 – DJ Mix Player</title>
+<link rel="stylesheet" href="style.css">
+</head>
+<body>
+
+<header>
+  <h1>Afterhours</h1>
+  <nav aria-label="Main">
+    <ul>
+      <li><a href="#player">Mix</a></li>
+      <li><a href="#tracklist">Tracklist</a></li>
+      <li><a href="#cues">Hot cues</a></li>
+    </ul>
+  </nav>
+</header>
+
+<main>
+  <div class="title">
+    <h2>Afterhours 001</h2>
+    <p>A continuous mix. Save your favourite drops to the pads and jump straight back to them.</p>
+  </div>
+
+  <div class="deck" id="player">
+    <section aria-label="Video player">
+      <div class="screen">
+        <!-- Native controls removed so my custom controls are the only ones.
+             Swap src for the DJ mix file from the course resources. -->
+        <video id="mix" src="https://thelongesthumstore.sgp1.cdn.digitaloceanspaces.com/IM-2250/miac.mp4" playsinline preload="metadata"></video>
+        <div class="bars" aria-hidden="true"><i></i><i></i><i></i><i></i><i></i></div>
+      </div>
+
+      <div class="transport">
+        <button id="play" aria-label="Play"><img id="playIcon" src="https://img.icons8.com/ios-glyphs/30/play--v1.png" alt=""></button>
+        <span class="time" id="cur">0:00</span>
+        <div class="seekwrap">
+          <div id="markers" aria-hidden="true"></div>
+          <input id="seek" type="range" min="0" max="1000" value="0" aria-label="Seek">
+        </div>
+        <span class="time" id="dur">0:00</span>
+      </div>
+      <div class="fader" style="max-width:260px">
+        <label for="vol">Volume <span id="volOut">100%</span></label>
+        <input id="vol" type="range" min="0" max="1" step="0.01" value="1">
+      </div>
+    </section>
+
+    <aside class="side" id="cues" aria-label="Hot cues and pitch">
+      <h3>Hot cues</h3>
+      <p>Tap a pad to jump. Empty pad? It saves the current spot. Keys 1–4.</p>
+      <div class="pads">
+        <button class="pad" data-i="0"><b>A</b><small>empty</small></button>
+        <button class="pad" data-i="1"><b>B</b><small>empty</small></button>
+        <button class="pad" data-i="2"><b>C</b><small>empty</small></button>
+        <button class="pad" data-i="3"><b>D</b><small>empty</small></button>
+      </div>
+      <div class="tools">
+        <button id="setMode" aria-pressed="false">Set mode: off</button>
+      </div>
+      <div class="fader">
+        <label for="pitch">Pitch <span id="pitchOut">0.0%</span></label>
+        <input id="pitch" type="range" min="0.92" max="1.08" step="0.01" value="1">
+      </div>
+    </aside>
+  </div>
+
+  <section class="tracklist" id="tracklist">
+    <h3>Tracklist</h3>
+    <ol id="tracks">
+      <li><button data-p="0"><span class="t">0:00</span>Warm-up: opening groove</button></li>
+      <li><button data-p="0.25"><span class="t">0:00</span>First build and drop</button></li>
+      <li><button data-p="0.5"><span class="t">0:00</span>Peak-time section</button></li>
+      <li><button data-p="0.75"><span class="t">0:00</span>Cool-down and outro</button></li>
+    </ol>
+  </section>
+</main>
+
+<footer>
+  © 2024 Afterhours DJ mix player. <a href="https://icons8.com/icon/59862/play">Play</a> icon by <a href="https://icons8.com">Icons8</a>, <a href="https://icons8.com/icon/61012/pause">Pause</a> icon by <a href="https://icons8.com">Icons8</a>.
+</footer>
+
+<!-- aria-live so screen readers announce the same feedback sighted users see -->
+<div id="toast" role="status" aria-live="polite"></div>
+
+<script src="script.js"></script>
+</body>
+</html>
